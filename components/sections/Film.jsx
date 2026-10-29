@@ -9,10 +9,10 @@ import { SectionHeading } from '../ui';
 
 const SRC = '/video/svavass-community.mp4';
 const chapters = [
-  { t: 0, label: 'Together' },
-  { t: 12, label: 'Outdoors' },
-  { t: 19, label: 'Stillness' },
-  { t: 26, label: 'At home' },
+  { t: 0, label: 'In the park' },
+  { t: 6, label: 'Conversations' },
+  { t: 12, label: 'Old friends' },
+  { t: 27, label: 'Evening' },
 ];
 
 // The video file is only requested once the visitor chooses to play it.
@@ -54,15 +54,15 @@ export default function Film() {
               eyebrow="The Svavass Film"
               title={
                 <>
-                  A gentler rhythm, <em>in motion.</em>
+                  Good company, <em>outdoors.</em>
                 </>
               }
             />
           </Reveal>
           <Reveal delay={100}>
             <p className="lead">
-              Shared afternoons, open green spaces, quiet moments and the comfort of home — a short
-              film on the life we are creating.
+              A relaxed afternoon in the park, where older friends can meet, talk and enjoy the
+              simple pleasure of being together.
             </p>
           </Reveal>
         </div>
@@ -77,7 +77,7 @@ export default function Film() {
               controls
               playsInline
               preload="auto"
-              aria-label="Svavass film: older couples enjoying parks, open fields, a seaside view and a calm home interior. No sound."
+              aria-label="Svavass film: older friends spending relaxed time together in a park. No sound."
               aria-describedby="film-desc"
               onTimeUpdate={(e) => setCurrent(e.currentTarget.currentTime)}
             />
@@ -90,7 +90,7 @@ export default function Film() {
                 </svg>
               </span>
               <span className="film-play-label">
-                Play film <span className="film-meta">34 sec · no sound</span>
+                Play film <span className="film-meta">33 sec · no sound</span>
               </span>
             </button>
           )}
@@ -110,10 +110,10 @@ export default function Film() {
           <details className="film-desc" id="film-desc">
             <summary>Read a description of the film</summary>
             <p>
-              An older couple laughs together under the trees; a woman offers her husband a bunch of
-              yellow flowers on a park bench; a man walks a path through bright green fields; another
-              sits on a bench gazing at the sea; and a woman rests in an armchair beside a sunlit
-              window at home. The film has no dialogue or soundtrack.
+              Two friends sit together on a park bench; an elderly couple chats in the shade of a
+              tree; two men in white kurtas talk by the water; a grandmother shares a tender moment
+              with her grandson in the garden; a woman rests on a garden swing; and the friends on
+              the bench watch the sun go down. The film has no dialogue or soundtrack.
             </p>
           </details>
         </div>
