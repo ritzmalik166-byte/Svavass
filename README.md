@@ -1,54 +1,197 @@
-# Svavass Senior Living — website
+# Svavass Senior Living
 
-Single-page marketing site for **Svavass — An Estate for Wellbeing & Senior Living, by DFPL**.
-Built with Next.js 16 (App Router) + React 19 and plain CSS, the same stack as the other sites in this workspace.
+A premium, responsive website for **Svavass Senior Living**, designed to communicate comfort, independence, community, and peace of mind through an elegant digital experience.
+
+The website combines nature-inspired aesthetics, accessible user experiences, lifestyle imagery, and modern web design to help families explore senior living options.
+
+## ✨ Features
+
+- **Premium UI/UX:** Elegant layouts, refined typography, warm colors, and nature-inspired visuals.
+- **Responsive Design:** Optimized for desktops, tablets, and mobile devices.
+- **Hero Section:** Engaging visuals, introductory messaging, and enquiry call-to-action.
+- **Lifestyle & Amenities:** Dedicated sections showcasing residences, community living, wellness, and facilities.
+- **Video Experience:** Senior-living-related video content with accessible playback controls.
+- **Image Gallery:** Visual showcase of residences, landscapes, and community experiences.
+- **Cookie Consent:** Accept, reject, and customize cookie preferences with persistent consent settings.
+- **Enquiry Form:** Interface for prospective residents and families to submit enquiries.
+- **Accessibility:** Readable typography, clear navigation, keyboard support, and reduced-motion considerations.
+- **SEO-Friendly:** Structured page content, descriptive metadata, and semantic HTML.
+- **Performance Optimization:** Responsive images, lazy loading, and efficient component reuse.
+
+## 🎨 Design Philosophy
+
+The website follows a calm, welcoming, and sophisticated visual direction.
+
+- **Visual style:** Premium, minimal, nature-inspired.
+- **Color palette:** Warm neutrals, soft greens, and earthy accents, following the Svavass brand guidelines.
+- **Typography:** Clear, refined, and comfortable to read.
+- **Interactions:** Subtle transitions and gentle animations.
+- **User experience:** Accessible, intuitive, and senior-friendly.
+
+The design takes inspiration from [Ashiana Senior Living](https://ashianaseniorliving.com/) while maintaining a distinctive Svavass brand identity.
+
+## 🛠️ Technology Stack
+
+The project uses the existing framework, dependencies, and architecture configured in the repository.
+
+To identify the exact technologies, inspect `package.json` and the project configuration files.
+
+Potential technologies include:
+
+- React / Next.js
+- JavaScript / TypeScript
+- CSS / Tailwind CSS
+- Modern image and video optimization techniques
+
+*Update this section to reflect the technologies actually used in the project.*
+
+## 📁 Project Structure
+
+The exact structure depends on the existing implementation. A typical organization might look like this:
+
+```text
+svavass/
+├── public/
+│   ├── images/
+│   ├── videos/
+│   └── logo/
+├── src/
+│   ├── app/ or pages/
+│   ├── components/
+│   ├── styles/
+│   └── lib/
+├── package.json
+├── README.md
+└── configuration files
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (version compatible with the project)
+- npm, Yarn, pnpm, or the package manager used by the repository
+- Git (optional, for version control)
+
+### 1. Navigate to the project
+
+```bash
+cd path/to/svavass
+```
+
+Replace the path with your actual project directory.
+
+### 2. Install dependencies
+
+For npm:
 
 ```bash
 npm install
-npm run dev      # http://localhost:3010
-npm run build && npm start
 ```
 
-## Before launch: replace the placeholders
+If the project uses Yarn or pnpm, use the corresponding package manager instead.
 
-All unverified content lives in **`lib/site.js`**. Each block marked `PLACEHOLDER` needs confirming with DFPL:
+### 3. Start the development server
 
-| What | Where |
-| --- | --- |
-| Phone, email, address, visiting hours, map link | `contact` |
-| Production domain (canonical URL, sitemap, OG tags) | `site.url` |
-| Amenities | `amenityFeatures`, `amenityList` |
-| Residence types, areas and design features | `residences`, `residenceDesign` |
-| Care services | `care` |
-| Testimonials (use real, consented quotes only) | `testimonials` |
+For a project configured with the standard npm development script:
 
-The site shows small "indicative" notes beside amenities, residences and care, plus a disclaimer in the footer. Edit or remove them once the content is confirmed.
+```bash
+npm run dev
+```
 
-## Enquiry form
+Open the local address displayed in the terminal, commonly `http://localhost:3000` for Next.js applications.
 
-The form posts to `app/api/enquiry/route.js`, which validates each submission on the server (the rules are in `lib/enquiry.js`) and has a honeypot field to catch spam.
-Set `ENQUIRY_WEBHOOK_URL` to forward each lead as JSON to a CRM, Zapier, Google Apps Script or similar.
-If it isn't set, leads are only written to the server log.
+**Note:** Available commands depend on the scripts defined in `package.json`.
 
-## Brand assets
+## 🏗️ Production Build
 
-- `public/brand/`: the official logo, extracted as vectors from *Svavass logo guideline*. Files: `svavass-logo.svg` (original), `-gold.svg` (dark surfaces), `-white.svg` (white on dark), and `svavass-mark.svg` (hummingbird, also used for the brand pattern). `app/icon.svg` is the favicon.
-- Colours: Deep Olive `#2B3324` and Gold `#D7AD51` (from the guideline), with supporting ivory, sage and clay tones. All are defined as tokens in `app/globals.css`.
-- Typography: the brand fonts are **Gohdtail** (display) and **Grift** (sans). They need web licences, so Cormorant Garamond and Outfit stand in for now. To switch, add the `.woff2` files to `public/fonts/` and uncomment the `@font-face` rules at the top of `globals.css`. The font stacks already list the brand fonts first.
+Create a production build:
 
-## Photography
+```bash
+npm run build
+```
 
-The images in `public/images/` are representative stock photos (Unsplash licence). Replace them with project photography when it's available:
-`npm run images -- <folder-of-jpgs>` resizes the originals and converts them to WebP. Keep the same file names, or update `lib/images.js`.
+Run any configured lint checks:
 
-## Film & cookies
+```bash
+npm run lint
+```
 
-- `public/video/svavass-community.mp4` is a 34-second silent edit of free Mixkit stock clips (Mixkit licence), with `public/images/video-poster.webp` as its poster image. It only downloads when someone presses play. Replace it with project footage when that's available.
-- Cookie consent (`components/CookieConsent.jsx`) saves the visitor's choice to localStorage and to a `svavass-consent` cookie. It also fires a `svavass:consent` event; analytics and marketing scripts should load only after that event confirms consent. Visitors can reopen their preferences from "Cookie preferences" in the footer.
+Some projects may require a separate start command to serve the production build:
 
-## Accessibility notes
+```bash
+npm run start
+```
 
-- 18px base text, plus a visitor text-size control (A / A+ / A++) that is remembered between visits
-- Skip link, visible focus rings, keyboard-operable tabs, menu and lightbox
-- Large touch targets and a sticky call/visit bar on phones
-- Testimonials never rotate on their own, and animations respect `prefers-reduced-motion`
+Resolve any build errors before deploying.
+
+## 🖼️ Brand Assets & Media
+
+The website should follow the official Svavass logo guidelines.
+
+- Use the approved Svavass logo and brand colors.
+- Optimize images for appropriate display sizes.
+- Use relevant senior-living photography.
+- Provide descriptive alternative text for meaningful images.
+- Optimize video delivery and use suitable poster images.
+- Avoid broken media links and unnecessary large downloads.
+
+Ensure that all media assets are appropriately licensed for website use.
+
+## ♿ Accessibility
+
+The website aims to provide a comfortable browsing experience for older adults and their families.
+
+- Maintain readable font sizes and sufficient color contrast.
+- Use large, clearly labeled interactive controls.
+- Support keyboard navigation and visible focus indicators.
+- Respect reduced-motion preferences.
+- Provide accessible form labels and error messages.
+- Avoid unnecessary movement and distracting visual effects.
+
+## 🔒 Privacy & Cookie Consent
+
+The cookie consent interface should provide clear choices for accepting, rejecting, or customizing optional cookies.
+
+- Store consent preferences appropriately.
+- Provide a way to reopen cookie settings.
+- Do not load non-essential tracking technologies before the required consent is obtained.
+- Keep necessary cookies separate from optional analytics and marketing cookies.
+
+Configure the implementation according to the actual cookies and tracking technologies used by the website.
+
+## 📋 Content & Configuration
+
+Before launch, verify:
+
+- Official contact information and enquiry destinations.
+- Residence details, amenities, and service descriptions.
+- Video and image licensing.
+- Privacy policy and cookie policy.
+- Genuine testimonials and customer feedback.
+- SEO titles, descriptions, and social sharing metadata.
+
+Avoid publishing placeholder information or unverified claims.
+
+## 🚢 Deployment
+
+Deploy using a hosting platform compatible with the project's framework.
+
+Before deployment:
+
+1. Install dependencies and run the production build.
+2. Verify responsive layouts across common screen sizes.
+3. Test navigation, enquiry forms, video playback, and cookie preferences.
+4. Check image loading, accessibility, and browser console errors.
+5. Configure production environment variables if required.
+6. Verify the deployed website and its metadata.
+
+## 📌 Project Goal
+
+Deliver a trustworthy, visually sophisticated digital experience that presents Svavass Senior Living as a welcoming place to enjoy comfort, independence, meaningful connections, and a fulfilling lifestyle.
+
+---
+
+**Project:** DFPL Builder — Svavass Senior Living  
+**Status:** Update according to the current implementation.  
+**Brand:** Svavass Senior Living
