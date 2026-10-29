@@ -1,10 +1,9 @@
-import { Cormorant_Garamond, Outfit } from 'next/font/google';
+import { Allura, Cormorant_Garamond, Figtree } from 'next/font/google';
 import { site } from '@/lib/site';
 import './globals.css';
-import './enhancements.css';
 
 // Brand typefaces are Gohdtail (display) and Grift (sans). Until web licences are
-// added, Cormorant Garamond and Outfit stand in; globals.css lists the brand fonts
+// added, Cormorant Garamond and Figtree stand in; globals.css lists the brand fonts
 // first so they take over automatically once @font-face files are supplied.
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -14,9 +13,17 @@ const display = Cormorant_Garamond({
   display: 'swap',
 });
 
-const sans = Outfit({
+const sans = Figtree({
   subsets: ['latin'],
   variable: '--font-sans-fallback',
+  display: 'swap',
+});
+
+// Used once, decoratively, for the handwritten line over the hero photograph.
+const script = Allura({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-script',
   display: 'swap',
 });
 
@@ -33,9 +40,10 @@ export const metadata = {
     'retirement homes',
     'assisted living',
     'senior citizen homes',
-    'wellbeing estate',
+    'senior living India',
+    'retirement community',
     'Svavass',
-    'DFPL',
+    'DFPL Builders',
   ],
   alternates: { canonical: '/' },
   openGraph: {
@@ -44,14 +52,14 @@ export const metadata = {
     siteName: site.fullName,
     title: `${site.fullName} — ${site.tagline}`,
     description: site.description,
-    images: [{ url: '/images/hero.webp', width: 2400, height: 1600, alt: 'A laughing older couple holding hands beneath shady trees' }],
+    images: [{ url: '/images/couple-rose.webp', width: 1600, height: 1911, alt: 'A smiling older couple standing together in a garden' }],
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
     title: `${site.fullName} — ${site.tagline}`,
     description: site.description,
-    images: ['/images/hero.webp'],
+    images: ['/images/couple-rose.webp'],
   },
   robots: { index: true, follow: true },
 };
@@ -74,7 +82,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN" className={`${display.variable} ${sans.variable}`}>
+    <html lang="en-IN" className={`${display.variable} ${sans.variable} ${script.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to main content

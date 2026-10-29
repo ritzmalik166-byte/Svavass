@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import poster from '@/public/images/video-poster.webp';
 import Icon from '../Icon';
 import Reveal from '../Reveal';
-import { SectionHeading } from '../ui';
+import { Kicker } from '../ui';
 
 const SRC = '/video/svavass-community.mp4';
 const chapters = [
@@ -48,23 +48,16 @@ export default function Film() {
     <section id="film" className="section film" aria-labelledby="film-title">
       <div className="container">
         <div className="film-head">
-          <Reveal>
-            <SectionHeading
-              id="film-title"
-              eyebrow="The Svavass Film"
-              title={
-                <>
-                  Good company, <em>outdoors.</em>
-                </>
-              }
-            />
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="lead">
-              A relaxed afternoon in the park, where older friends can meet, talk and enjoy the
-              simple pleasure of being together.
-            </p>
-          </Reveal>
+          <div>
+            <Kicker>Watch the film</Kicker>
+            <h2 id="film-title">
+              Life at Svavass, <em>as it should feel</em>
+            </h2>
+          </div>
+          <p>
+            A relaxed afternoon in the park — old friends, long conversations and the simple
+            pleasure of being together.
+          </p>
         </div>
 
         <Reveal className="film-frame">
@@ -85,7 +78,7 @@ export default function Film() {
             <button type="button" className="film-poster" onClick={() => play(0)} aria-describedby="film-desc">
               <Image src={poster} alt="" fill sizes="(max-width: 1300px) 100vw, 1280px" placeholder="blur" />
               <span className="film-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="30" height="30">
+                <svg viewBox="0 0 24 24" width="26" height="26">
                   <path d="M8 5.5v13l10.5-6.5Z" fill="currentColor" />
                 </svg>
               </span>
@@ -117,7 +110,6 @@ export default function Film() {
             </p>
           </details>
         </div>
-        <p className="placeholder-note tone-light">Footage is representative of the intended lifestyle.</p>
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ import { images } from '@/lib/images';
 import { gallery } from '@/lib/site';
 import Icon from '../Icon';
 import Reveal from '../Reveal';
-import { SectionHeading } from '../ui';
+import { Kicker } from '../ui';
 
 export default function Gallery() {
   const dialogRef = useRef(null);
@@ -48,26 +48,19 @@ export default function Gallery() {
   return (
     <section id="gallery" className="section gallery" aria-labelledby="gallery-title">
       <div className="container">
-        <div className="gallery-head">
-          <Reveal>
-            <SectionHeading
-              id="gallery-title"
-              eyebrow="Gallery"
-              title={
-                <>
-                  Moments of <em>light and quiet.</em>
-                </>
-              }
-            />
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="lead">A glimpse of the mood we are creating. Select any image to view it larger.</p>
-          </Reveal>
+        <div className="section-head">
+          <div>
+            <Kicker>Gallery</Kicker>
+            <h2 id="gallery-title">
+              Small moments, <em>every day</em>
+            </h2>
+          </div>
+          <p className="section-head-note">Select any photograph to view it larger.</p>
         </div>
 
         <ul className="gallery-grid">
           {gallery.map((g, i) => (
-            <Reveal as="li" key={g.img} className={`gallery-item ${g.wide ? 'is-wide' : ''} ${g.tall ? 'is-tall' : ''}`} delay={(i % 4) * 70}>
+            <Reveal as="li" key={g.img} className={`gallery-item ${g.wide ? 'is-wide' : ''} ${g.tall ? 'is-tall' : ''}`} delay={(i % 4) * 60}>
               <button type="button" className="gallery-btn" onClick={() => openAt(i)} aria-label={`View larger: ${g.alt}`}>
                 <Image
                   src={images[g.img]}
@@ -82,7 +75,7 @@ export default function Gallery() {
             </Reveal>
           ))}
         </ul>
-        <p className="placeholder-note tone-light">Images are representative of the intended lifestyle and setting.</p>
+        <p className="fine-print">Photographs are representative of the intended lifestyle.</p>
       </div>
 
       <dialog

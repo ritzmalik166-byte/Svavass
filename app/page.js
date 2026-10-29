@@ -1,15 +1,18 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/sections/Hero';
-import About from '@/components/sections/About';
-import Lifestyle from '@/components/sections/Lifestyle';
-import Amenities from '@/components/sections/Amenities';
-import Residences from '@/components/sections/Residences';
-import SafetyCare from '@/components/sections/SafetyCare';
-import Gallery from '@/components/sections/Gallery';
-import Testimonials from '@/components/sections/Testimonials';
-import Enquiry from '@/components/sections/Enquiry';
+import Highlights from '@/components/sections/Highlights';
+import Project from '@/components/sections/Project';
+import Living from '@/components/sections/Living';
+import Day from '@/components/sections/Day';
 import Film from '@/components/sections/Film';
+import Residences from '@/components/sections/Residences';
+import Stories from '@/components/sections/Stories';
+import Gallery from '@/components/sections/Gallery';
+import AboutDfpl from '@/components/sections/AboutDfpl';
+import Location from '@/components/sections/Location';
+import VisitBand from '@/components/sections/VisitBand';
+import Enquiry from '@/components/sections/Enquiry';
 import CookieConsent from '@/components/CookieConsent';
 
 export default function Home() {
@@ -18,14 +21,17 @@ export default function Home() {
       <Navbar />
       <main id="main">
         <Hero />
-        <About />
-        <Lifestyle />
+        <Highlights />
+        <Project />
+        <Living />
+        <Day />
         <Film />
-        <Amenities />
         <Residences />
-        <SafetyCare />
+        <Stories />
         <Gallery />
-        <Testimonials />
+        <AboutDfpl />
+        <Location />
+        <VisitBand />
         <Enquiry />
       </main>
       <Footer />

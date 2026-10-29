@@ -5,7 +5,7 @@ import { contact } from '@/lib/site';
 import { enquiryOptions, validateEnquiry } from '@/lib/enquiry';
 import Icon from '../Icon';
 import Reveal from '../Reveal';
-import { SectionHeading } from '../ui';
+import { Kicker } from '../ui';
 
 const fieldOrder = ['name', 'phone', 'email', 'enquiringFor', 'visitDate', 'message', 'consent'];
 
@@ -93,20 +93,20 @@ export default function Enquiry() {
   };
 
   return (
-    <section id="enquire" className="section enquiry tone-dark pattern" aria-labelledby="enquire-title">
+    <section id="enquire" className="section enquiry" aria-labelledby="enquire-title">
       <div className="container enquiry-grid">
         <Reveal className="enquiry-info">
-          <SectionHeading
-            id="enquire-title"
-            tone="dark"
-            eyebrow="Enquire & Visit"
-            title={
-              <>
-                Come for tea. <em>Stay for the view.</em>
-              </>
-            }
-            intro="The best way to know Svavass is to experience it. Share a few details and our team will call you back to answer questions or arrange an unhurried visit."
-          />
+          <Kicker>Enquire &amp; visit</Kicker>
+          <h2 id="enquire-title">
+            Come for chai.
+            <br />
+            <em>Stay for the conversation.</em>
+          </h2>
+          <p className="enquiry-lead">
+            The best way to know Svavass is to spend an afternoon here. Share a few details and our
+            team will call you back to answer questions or arrange an unhurried visit — bring the
+            family along.
+          </p>
 
           <ul className="contact-list">
             <li>
@@ -223,7 +223,7 @@ export default function Enquiry() {
                 {errors.consent && <p className="field-error" id="consent-error">{errors.consent}</p>}
               </div>
 
-              <button type="submit" className="btn btn-gold btn-block" disabled={status === 'sending'}>
+              <button type="submit" className="btn btn-primary btn-block" disabled={status === 'sending'}>
                 <span>{status === 'sending' ? 'Sending…' : 'Send enquiry'}</span>
                 {status !== 'sending' && <Icon name="arrow" size={20} />}
               </button>

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { contact, nav } from '@/lib/site';
 import Icon from './Icon';
-import { Logo } from './ui';
+import { DfplLogo } from './ui';
 
 const TEXT_SIZES = [
   { id: 'base', label: 'A', name: 'Standard text size' },
@@ -56,7 +56,7 @@ export default function Navbar() {
   }, [size]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 120);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -64,12 +64,11 @@ export default function Navbar() {
 
   // Highlight the section currently in view.
   useEffect(() => {
-    // The hero (#top) is observed too, so nothing is highlighted while it is in view.
-    const sections = ['top', ...nav.map((n) => n.id)].map((id) => document.getElementById(id)).filter(Boolean);
+    const sections = nav.map((n) => n.id).map((id) => document.getElementById(id)).filter(Boolean);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id === 'top' ? '' : e.target.id);
+          if (e.isIntersecting) setActive(e.target.id);
         });
       },
       { rootMargin: '-45% 0px -50% 0px' }
@@ -105,7 +104,7 @@ export default function Navbar() {
         }
       }
     };
-    const onResize = () => window.innerWidth >= 1100 && close(false);
+    const onResize = () => window.innerWidth >= 1180 && close(false);
     document.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
     return () => {
@@ -115,17 +114,15 @@ export default function Navbar() {
     };
   }, [open, close]);
 
-  const solid = scrolled || open;
-
   return (
     <>
-      <header className={`site-header ${solid ? 'is-solid' : ''} ${open ? 'is-open' : ''}`}>
+      <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
         <div className="utility-bar">
           <div className="container utility-inner">
-            <p className="utility-tagline">An Estate for Wellbeing &amp; Senior Living</p>
+            <p className="utility-note">Svavass Senior Living — a DFPL initiative</p>
             <div className="utility-actions">
               <a href={contact.phoneHref} className="utility-link">
-                <Icon name="phone" size={18} />
+                <Icon name="phone" size={16} />
                 <span>{contact.phone}</span>
               </a>
               <TextSizeControl size={size} onChange={setSize} />
@@ -134,8 +131,8 @@ export default function Navbar() {
         </div>
 
         <nav className="container nav-bar" aria-label="Main">
-          <a href="#top" className="nav-logo" aria-label="Svavass — back to top" onClick={() => open && close(false)}>
-            <Logo variant={solid ? 'color' : 'white'} width={168} />
+          <a href="#top" className="nav-logo" aria-label="DFPL Builders — back to top" onClick={() => open && close(false)}>
+            <DfplLogo />
           </a>
 
           <ul className="nav-links">
@@ -148,8 +145,9 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a href="#enquire" className="btn btn-gold nav-cta">
-            <span>Book a Visit</span>
+          <a href="#enquire" className="btn btn-primary btn-sm nav-cta">
+            <span>Enquire Now</span>
+            <Icon name="arrow" size={16} />
           </a>
 
           <button
@@ -161,7 +159,7 @@ export default function Navbar() {
             onClick={() => setOpen((o) => !o)}
           >
             <span className="nav-toggle-label">{open ? 'Close' : 'Menu'}</span>
-            <span className="nav-toggle-icon" aria-hidden="true">
+            <span className="nav-toggle-icon" aria-hidden='true'>
               <span />
               <span />
             </span>
@@ -171,24 +169,21 @@ export default function Navbar() {
         <div id="mobile-menu" ref={panelRef} className="mobile-menu" hidden={!open}>
           <div className="container">
             <ul className="mobile-links">
-              {nav.map((item, i) => (
-                <li key={item.id} style={{ '--i': i }}>
+              {nav.map((item) => (
+                <li key={item.id}>
                   <a href={`#${item.id}`} onClick={() => close(false)}>
-                    <span className="mobile-index" aria-hidden="true">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
             <div className="mobile-footer">
-              <a href="#enquire" className="btn btn-gold" onClick={() => close(false)}>
-                <span>Book a Visit</span>
-                <Icon name="arrow" size={20} />
+              <a href="#enquire" className="btn btn-primary" onClick={() => close(false)}>
+                <span>Book a site visit</span>
+                <Icon name="arrow" size={18} />
               </a>
-              <a href={contact.phoneHref} className="btn btn-ghost-light">
-                <Icon name="phone" size={20} />
+              <a href={contact.phoneHref} className="btn btn-outline">
+                <Icon name="phone" size={18} />
                 <span>Call {contact.phone}</span>
               </a>
               <TextSizeControl size={size} onChange={setSize} />
@@ -204,7 +199,7 @@ export default function Navbar() {
           <span>Call us</span>
         </a>
         <a href="#enquire" className="mobile-action mobile-action-primary">
-          <span>Book a Visit</span>
+          <span>Book a visit</span>
           <Icon name="arrow" size={20} />
         </a>
       </div>

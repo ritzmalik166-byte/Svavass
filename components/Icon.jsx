@@ -24,6 +24,8 @@ const paths = {
   play: <path d="M8 5.5v13l10.5-6.5Z" />,
   pause: <path d="M8 5v14M16 5v14" />,
   cookie: <><path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 3.5 3.5 3 3 0 0 0 5.5 5.5Z" /><circle cx="8.5" cy="10" r="1" /><circle cx="12" cy="15" r="1" /><circle cx="16" cy="14" r=".6" /></>,
+  people: <><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.3" /><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5" /><path d="M15 14.3c.6-.2 1.3-.3 2-.3 2.2 0 3.8 1.4 4.3 4" /></>,
+  train: <><rect x="6" y="3" width="12" height="13" rx="3" /><path d="M6 10h12M9 13h.01M15 13h.01M8 20l2-4M16 20l-2-4" /></>,
   expand:<path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" />,
 };
 
